@@ -67,12 +67,12 @@ def quitHeroes():
     quitHeroesPosThree = pyautogui.locateCenterOnScreen("alvos/sair_heroisThree.png")
 
     if quitHeroesPos != None:
-        pyautogui.click(quitHeroesPos.x, quitHeroesPos.y)
+        pyautogui.click(quitHeroesPos.x, quitHeroesPos.y, duration=1)
 
     elif quitHeroesPosTwo != None:
-        pyautogui.click(quitHeroesPosTwo.x, quitHeroesPosTwo.y)
+        pyautogui.click(quitHeroesPosTwo.x, quitHeroesPosTwo.y, duration=1)
     else:
-        pyautogui.click(quitHeroesPosThree.x, quitHeroesPosThree.y)
+        pyautogui.click(quitHeroesPosThree.x, quitHeroesPosThree.y, duration=1)
 
     time.sleep(2)
     farm()
