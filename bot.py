@@ -16,20 +16,23 @@ def loggin():
     connectPos = pyautogui.locateCenterOnScreen("alvos/Conectar.png")
     pyautogui.click(connectPos.x, connectPos.y)
 
-    time.sleep(5)
+    time.sleep(6)
 
     connectMetaPos = pyautogui.locateCenterOnScreen("alvos/conectar_metamask.png")
     pyautogui.click(connectMetaPos.x, connectMetaPos.y)
 
-    time.sleep(5)
+    time.sleep(15)
+    heroes()
 
 
 
 def farm():
 
+    time.sleep(3)
     farmPos = pyautogui.locateCenterOnScreen("alvos/farmar.png")
     pyautogui.click(farmPos.x, farmPos.y)
-    time.sleep(1)
+    time.sleep(600)
+    quitFarm()
 
 
 
@@ -38,6 +41,7 @@ def quitFarm():
     quitFarmPos = pyautogui.locateCenterOnScreen("alvos/sair_farm.png")
     pyautogui.click(quitFarmPos.x, quitFarmPos.y)
     time.sleep(1)
+    refresh()
 
 
 
@@ -46,10 +50,22 @@ def heroes():
     heroesPos = pyautogui.locateCenterOnScreen("alvos/herois.png")
     pyautogui.click(heroesPos.x, heroesPos.y)
     time.sleep(3)
+    locSelHeroes()
+
+
+
+def quitHeroes():
+
+    time.sleep(1)
+    quitHeroesPos = pyautogui.locateCenterOnScreen("alvos/sair_herois.png")
+    pyautogui.click(quitHeroesPos.x, quitHeroesPos.y)
+    time.sleep(3)
+    farm()
 
 
 
 def locSelHeroes():
+
     workPos = pyautogui.locateCenterOnScreen("alvos/work.png")
     workPos2 = pyautogui.locateCenterOnScreen("alvos/workTwo.png")
     if workPos != None or workPos2 != None:
@@ -60,6 +76,7 @@ def locSelHeroes():
 
 
 def SelHeroes():
+    
     workPos = pyautogui.locateCenterOnScreen("alvos/work.png")
     workPos2 = pyautogui.locateCenterOnScreen("alvos/workTwo.png")
     if workPos != None:
@@ -72,7 +89,9 @@ def SelHeroes():
         locSelHeroes()
 
 
+
 def rolHeroes():
+
     positionOn = pyautogui.locateCenterOnScreen("alvos/work_selecionado.png")
     if positionOn != None:
         pyautogui.moveTo(positionOn.x, positionOn.y)
@@ -83,16 +102,48 @@ def rolHeroes():
         if position != None or position2 != None:
             SelHeroes()
         else:
-            quit()
- 
-            
+            quitHeroes()
+
+
+
+def refresh():
+
+    pyautogui.hotkey('ctrlleft', 'f5')
+    time.sleep(10)
+    loggin()
+
+
+
+def identify():
+
+    connectPos = pyautogui.locateCenterOnScreen("alvos/Conectar.png")
+    pyautogui.click(connectPos.x, connectPos.y)
+    heroesPos = pyautogui.locateCenterOnScreen("alvos/herois.png")
+    pyautogui.click(heroesPos.x, heroesPos.y)
+    quitFarmPos = pyautogui.locateCenterOnScreen("alvos/sair_farm.png")
+    pyautogui.click(quitFarmPos.x, quitFarmPos.y)
+
+    if connectPos != None:
+        loggin()
+    elif heroesPos != None:
+        heroes()
+    elif quitFarmPos != None:
+        quitFarm()
+
+
 
 #loggin()
 #farm()
 #quitFarm()
 #heroes()
-locSelHeroes()
+#locSelHeroes()
 #staminaHeroes()
+#refresh()
+#quitHeroes()
+identify()
+
+
+
 
 
 
