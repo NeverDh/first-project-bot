@@ -56,10 +56,20 @@ def heroes():
 
 def quitHeroes():
 
-    time.sleep(1)
+    time.sleep(2)
     quitHeroesPos = pyautogui.locateCenterOnScreen("alvos/sair_herois.png")
-    pyautogui.click(quitHeroesPos.x, quitHeroesPos.y)
-    time.sleep(3)
+    quitHeroesPosTwo = pyautogui.locateCenterOnScreen("alvos/sair_heroisTwo.png")
+    quitHeroesPosThree = pyautogui.locateCenterOnScreen("alvos/sair_heroisThree.png")
+
+    if quitHeroesPos != None:
+        pyautogui.click(quitHeroesPos.x, quitHeroesPos.y)
+
+    elif quitHeroesPosTwo != None:
+        pyautogui.click(quitHeroesPosTwo.x, quitHeroesPosTwo.y)
+    else:
+        pyautogui.click(quitHeroesPosThree.x, quitHeroesPosThree.y)
+
+    time.sleep(2)
     farm()
 
 
@@ -116,19 +126,17 @@ def refresh():
 
 def identify():
 
+    time.sleep(5)
+
     connectPos = pyautogui.locateCenterOnScreen("alvos/Conectar.png")
-    pyautogui.click(connectPos.x, connectPos.y)
     heroesPos = pyautogui.locateCenterOnScreen("alvos/herois.png")
-    pyautogui.click(heroesPos.x, heroesPos.y)
-    quitFarmPos = pyautogui.locateCenterOnScreen("alvos/sair_farm.png")
-    pyautogui.click(quitFarmPos.x, quitFarmPos.y)
 
     if connectPos != None:
         loggin()
     elif heroesPos != None:
         heroes()
-    elif quitFarmPos != None:
-        quitFarm()
+    else:
+        quitHeroes()
 
 
 
